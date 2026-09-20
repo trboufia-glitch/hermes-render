@@ -18,4 +18,4 @@ COPY . .
 RUN uv pip install --system hermes-agent
 
 # تشغيل Hermes gateway
-CMD ["hermes", "gateway", "start"]
+CMD ["hermes", "gateway", "run"]
