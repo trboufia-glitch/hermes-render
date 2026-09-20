@@ -1,5 +1,11 @@
+# fly.toml app configuration file generated for hermes-render on 2026-09-20T10:56:31Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
 app = "hermes-render"
-primary_region = "ams"
+primary_region = 'ams'
+swap_size_mb = 510
 
 [build]
   dockerfile = "Dockerfile"
@@ -17,5 +23,5 @@ primary_region = "ams"
 
 [[vm]]
   memory_mb = 256
-  cpu_kind = "shared"
+  cpu_kind = 'shared'
   cpus = 1
