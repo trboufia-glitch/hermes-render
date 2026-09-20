@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: hermes-bot
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: frankfurt
+    
+    envVars:
+      - key: HERMES_HOME
+        value: /app/.hermes
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: HERMES_GATEWAY_MODE
+        value: polling
+    
+    disk:
+      name: hermes-data
+      mountPath: /app/.hermes
+      sizeGB: 1
