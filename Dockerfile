@@ -4,18 +4,21 @@ FROM python:3.11-slim
 RUN apt-get update && apt-get install -y \
     curl \
     git \
+    gettext-base \
     && rm -rf /var/lib/apt/lists/*
 
 # تثبيت uv
 RUN curl -fsSL https://astral.sh/uv/install.sh | bash
 ENV PATH="/root/.local/bin:$PATH"
+ENV HERMES_HOME=/app/.hermes
 
 # نسخ ملفات المشروع
 WORKDIR /app
 COPY . .
+RUN chmod +x /app/entrypoint.sh
 
 # تثبيت Hermes
 RUN uv pip install --system hermes-agent
 
-# تشغيل Hermes gateway
-CMD ["hermes", "gateway", "run"]
+# تشغيل Hermes gateway عبر entrypoint
+CMD ["/app/entrypoint.sh"]
