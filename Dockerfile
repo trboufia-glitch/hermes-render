@@ -15,7 +15,7 @@ WORKDIR /app
 COPY . .
 
 # تثبيت Hermes
-RUN uv pip install hermes-agent
+RUN uv pip install --system hermes-agent
 
 # تشغيل Hermes gateway
 CMD ["hermes", "gateway", "start"]
